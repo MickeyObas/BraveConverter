@@ -70,7 +70,7 @@ def main():
             description= row[4]
             gender = row[5]
             attributes = row[6]
-            print(type(attributes))
+           
             for attribute in attributes.split("; "):
                 attribute_new = attribute.split(":")
                 result = list_to_dict(attribute_new)
