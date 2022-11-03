@@ -35,6 +35,11 @@ def valid_path(path):
     # Validate file type
     return os.path.exists(path)
 
+def list_to_dict(lst):
+    it = iter(lst)
+    dict_to_return = dict(zip(it, it))
+    return dict_to_return
+
 
 def main():
     # Create parser object
@@ -51,34 +56,39 @@ def main():
 
     # I initiate an empty list which i'll temporarily use to hold hash values
     hash_list = []
+    
 
     with open(file_name, 'r') as f:
         reader = csv.reader(f)
 
         for row in reader:
-            series_number = row[0]
-            filename = row[1]
-            name= row[2]
-            description= row[3]
-            gender = row[4]
-            attributes = row[5]
-            uuid = row[6]
+            attribute_list = []
+            team_name = row[0]
+            series_number = row[1]
+            filename = row[2]
+            name= row[3]
+            description= row[4]
+            gender = row[5]
+            attributes = row[6]
+            print(type(attributes))
+            for attribute in attributes.split("; "):
+                attribute_new = attribute.split(":")
+                result = list_to_dict(attribute_new)
+                attribute_list.append(result)
+
+            uuid = row[7]
 
             # I create a response model using the format given by the HNG9 mentors, then named it 'nft'
             nft = {
                 "format": "CHIP-0007",
                 "name": name,
                 "description": description,
-                "minting_tool": "Team x",
+                "minting_tool": "Team {}".format(team_name),
                 "sensitive_content": False,
                 "series_number": series_number,
                 "series_total": 420,
-                "attributes": [
-                    {
-                        "trait_type": "gender",
-                        "value": gender
-                    }
-                ],
+                "attributes": attribute_list
+                ,
                 "collection": {
                     "name": "Zuri NFT tickets for free lunch",
                     "id": uuid,

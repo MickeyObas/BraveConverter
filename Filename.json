@@ -1,0 +1,9 @@
+{
+    "format": "CHIP-0007", 
+    "name": "Name", 
+    "description": "Description", 
+    "minting_tool": "Team TEAM NAMES", 
+    "sensitive_content": false, 
+    "series_number": "Series Number", 
+    "series_total": 420, 
+    "attributes": 
