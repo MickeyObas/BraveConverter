@@ -2,7 +2,7 @@
 
 > What is this?
 
-I'm glad you asked. This program receives your csv file which is formatted to store NFT entries and their correct fields- *I hope*- and generates a sha-256 hashed JSON file for every single one of them.
+I'm glad you asked. This program receives your csv file which is formatted to store NFT entries and their respective fields- *I hope*- and generates a CHIP-007 compatible JSON file for every single one of them. 
 
 > How do I use it?
 
